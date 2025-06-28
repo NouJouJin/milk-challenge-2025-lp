@@ -1,13 +1,28 @@
-/* フォント設定 */
+/*
+ * Filename: style.css
+ * Description: 牛乳の日チャレンジ2025 総括LP用カスタムスタイルシート
+ */
+
+/* ==========================================================================
+   基本設定 & フォント
+   ========================================================================== */
 body {
-    font-family: 'M PLUS 1p', 'Helvetica Neue', Arial, sans-serif;
+    /* M PLUS 1pを優先しつつ、各OSの標準的なゴシック体も指定 */
+    font-family: 'M PLUS 1p', 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+    /* フォントの描画を滑らかにする設定 */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .font-mplus {
     font-family: 'M PLUS 1p', sans-serif;
 }
 
-/* セクションタイトルの共通スタイル */
+/* ==========================================================================
+   共通コンポーネント
+   ========================================================================== */
+
+/* セクションタイトルのスタイル */
 .section-title {
     text-align: center;
     font-size: 2.25rem; /* 36px */
@@ -17,10 +32,13 @@ body {
     padding-bottom: 1rem;
     letter-spacing: 0.1em;
 }
+
 .section-title span {
+    /* 下線が文字の背後に回らないようにするため */
     position: relative;
     z-index: 1;
 }
+
 .section-title::after {
     content: '';
     position: absolute;
@@ -29,39 +47,73 @@ body {
     transform: translateX(-50%);
     width: 80px;
     height: 4px;
-    background-color: #38bdf8; /* sky-400 */
+    background-color: #38bdf8; /* Tailwind: sky-400 */
     border-radius: 2px;
 }
 
-/* 投稿カードのスタイル */
+/* 申請ボタンのスタイル */
+.apply-button {
+    display: inline-block;
+    background-color: #38bdf8; /* Tailwind: sky-400 */
+    color: #0f172a; /* Tailwind: slate-900 */
+    font-weight: 700;
+    padding: 0.75rem 2rem;
+    border-radius: 9999px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 14px 0 rgba(0, 191, 255, 0.39);
+}
+
+.apply-button:hover {
+    background-color: #7dd3fc; /* Tailwind: sky-300 */
+    transform: scale(1.05);
+}
+
+
+/* ==========================================================================
+   セクション別スタイル
+   ========================================================================== */
+
+/* 投稿ギャラリーカードのスタイル */
 .post-card {
     background-color: rgba(255, 255, 255, 0.05);
     border-radius: 0.75rem;
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
 }
+
 .post-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
+
 .post-image {
     width: 100%;
     height: 200px;
     object-fit: cover;
 }
+
 .post-content {
     padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* コンテンツの高さを揃えるためにflex-growを設定 */
 }
+
 .post-text {
-    min-height: 80px; /* 高さを揃える */
-    color: #cbd5e1; /* slate-300 */
+    flex-grow: 1; /* テキスト部分を伸ばすことで、カードの高さを揃える */
+    color: #cbd5e1; /* Tailwind: slate-300 */
+    margin-bottom: 1rem;
 }
+
 .post-author {
-    margin-top: 1rem;
+    margin-top: auto; /* 作者名をカード下部に配置 */
     text-align: right;
     font-style: italic;
-    color: #94a3b8; /* slate-400 */
+    color: #94a3b8; /* Tailwind: slate-400 */
 }
 
 /* NFTカードのスタイル */
@@ -71,7 +123,13 @@ body {
     border-radius: 0.75rem;
     text-align: center;
     border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease;
 }
+
+.nft-card:hover {
+    transform: scale(1.03);
+}
+
 .nft-image {
     width: 100%;
     max-width: 250px;
@@ -79,30 +137,17 @@ body {
     border-radius: 0.5rem;
     aspect-ratio: 1 / 1;
     object-fit: cover;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
+
 .nft-title {
     font-size: 1.5rem;
     font-weight: 700;
     margin-top: 1rem;
-    color: #e2e8f0; /* slate-200 */
-}
-.nft-condition {
-    color: #38bdf8; /* sky-400 */
-    font-weight: 700;
+    color: #e2e8f0; /* Tailwind: slate-200 */
 }
 
-/* 申請ボタンのスタイル */
-.apply-button {
-    display: inline-block;
-    background-color: #38bdf8;
-    color: #0f172a;
+.nft-condition {
+    color: #38bdf8; /* Tailwind: sky-400 */
     font-weight: 700;
-    padding: 0.75rem 2rem;
-    border-radius: 9999px;
-    text-decoration: none;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-.apply-button:hover {
-    background-color: #7dd3fc;
-    transform: scale(1.05);
 }
