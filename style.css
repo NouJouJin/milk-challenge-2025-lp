@@ -151,3 +151,26 @@ body {
     color: #38bdf8; /* Tailwind: sky-400 */
     font-weight: 700;
 }
+
+/*
+ * --------------------------------------------------------------------------
+ *  NFTミントボタン用スタイル（追記）
+ * --------------------------------------------------------------------------
+ */
+.nft-mint-button {
+    display: inline-block;
+    background-color: rgba(56, 189, 248, 0.2); /* 背景を少し透明に */
+    border: 1px solid #38bdf8; /* 枠線を追加 */
+    color: #7dd3fc; /* 文字色を明るく */
+    font-weight: 700;
+    padding: 0.5rem 1.5rem; /* 少し小さめのボタンに */
+    border-radius: 9999px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin-top: 1rem; /* 上の要素との間に余白を追加 */
+}
+
+.nft-mint-button:hover {
+    background-color: #38bdf8;
+    color: #0f172a;
+}
